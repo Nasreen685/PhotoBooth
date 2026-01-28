@@ -1,0 +1,297 @@
+/* Page background */
+.container {
+  text-align: center;
+  z-index: 5;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Background image */
+  background-image: url("bg.jpg");
+  background-size: cover;          /* fills screen */
+  background-position: center;     /* center image */
+  background-repeat: no-repeat;    /* no tiling */
+  background-attachment: fixed;    /* sharper feel */
+
+  font-family: Arial, sans-serif;
+}
+/* Main container */
+.container {
+  text-align: center;
+  z-index: 5;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: hsla(0, 0%, 6%, 0.251);
+  z-index: 1;
+}
+/* Main container */
+.container {
+  text-align: center;
+  z-index: 5;
+}
+/* Camera wrapper */
+.camera-wrapper {
+  position: relative;
+  display: inline-block;
+}
+/* Camera video */
+#video {
+  width: 800px;
+  max-width: 95vw;
+  border-radius: 14px;
+  border: 20px solid #111;
+}
+
+/* Countdown */
+#countdown {
+  font-size: 48px;
+  color: hsl(187, 29%, 94%);
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* Strip preview */
+#stripPreview {
+  width: 320px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 10px solid #222;
+}
+
+/* Buttons */
+button {
+  padding: 10px 16px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+select {
+  padding: 10px 12px;
+  font-size: 14px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+/* Control buttons under camera */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.controls select,
+.controls button {
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+/* Bottom camera bar */
+.camera-controls {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Before preview controls */
+#preControls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Shutter button (mobile camera style) */
+/* Shutter button ON camera */
+#shutterBtn {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+
+  background: #1d0c0c;
+  border: 5px solid #3e5657;
+  cursor: pointer;
+
+  z-index: 5;
+}
+
+/* Inner shutter circle */
+#shutterBtn::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  background: #f3f3f3;
+  border-radius: 50%;
+}
+
+/* After preview controls */
+#postControls {
+  display: flex;
+  gap: 16px;
+}
+/* Buttons below photo strip */
+.strip-controls {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+/* Flash animation */
+#flash {
+  position: fixed;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.flash-active {
+  animation: flashAnim 0.4s ease-out;
+}
+
+@keyframes flashAnim {
+  0%   { opacity: 0; }
+  20%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+#filterLabel {
+  margin-top: 8px;
+  color: white;
+  font-weight: bold;
+}
+/* Curtains */
+#curtain-left,
+#curtain-right {
+  position: fixed;
+  top: 0;
+  width: 50%;
+  height: 100vh;
+  z-index: 1000;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 1.2s ease-in-out;
+}
+
+/* Left curtain */
+#curtain-left {
+  left: 0;
+  background-image: url("curtain-left.png");
+  transform: translateX(0);
+}
+
+/* Right curtain */
+#curtain-right {
+  right: 0;
+  background-image: url("curtain-right.png");
+  transform: translateX(0);
+}
+
+/* OPEN STATE */
+.curtain-open #curtain-left {
+  transform: translateX(-100%);
+}
+
+.curtain-open #curtain-right {
+  transform: translateX(100%);
+}
+/* Curtains should NOT block clicks */
+#curtain-left,
+#curtain-right {
+  pointer-events: none;
+}
+#filterLabel {
+  pointer-events: none;
+}
+/* Prevent overlays from blocking buttons */
+#curtain-left,
+#curtain-right,
+#filterLabel {
+  pointer-events: none;
+}
+
+/* Ensure main UI is clickable */
+.container {
+  position: relative;
+  z-index: 10;
+}
+/* Curtains base */
+#curtain-left,
+#curtain-right {
+  position: fixed;
+  top: 0;
+  width: 50%;
+  height: 100vh;
+
+  z-index: 1000;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  transition: transform 1.2s ease-in-out;
+
+  /* VERY IMPORTANT */
+  pointer-events: none;
+}
+
+/* Left curtain */
+#curtain-left {
+  left: 0;
+  background-image: url("curtain-left.png");
+  transform: translateX(0);
+}
+
+/* Right curtain */
+#curtain-right {
+  right: 0;
+  background-image: url("curtain-right.png");
+  transform: translateX(0);
+}
+
+/* OPEN STATE */
+.curtain-open #curtain-left {
+  transform: translateX(-100%);
+}
+
+.curtain-open #curtain-right {
+  transform: translateX(100%);
+}
+#stripPreview {
+  max-width: 350px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px hwb(39 11% 6% / 0.94);
+  margin: 50px auto;
+  display: block;
+}
+.strip-show {
+  animation: slideUp 0.6s ease forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#videoControls {
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+

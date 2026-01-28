@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Photo Booth</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Curtains -->
+<div id="curtain-left"></div>
+<div id="curtain-right"></div>
+
+<div class="container">
+
+  <!-- CAMERA TITLE -->
+  <h2 id="cameraTitle">📸 Here we Go..! Smile</h2>
+
+  <!-- CAMERA AREA -->
+  <div class="camera-wrapper">
+
+    <!-- Optional filter label -->
+    <div id="filterLabel"></div>
+
+    <video id="video" autoplay playsinline></video> 
+    <!-- SHUTTER BUTTON (ON CAMERA) -->
+    <button id="shutterBtn" onclick="handleShutter()"></button>
+
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div id="countdown"></div>
+
+  <!-- CONTROLS -->
+  <div class="camera-controls">
+    <div id="preControls">
+
+      <!-- MODE -->
+      
+        <select id="modeSelect">
+  <option value="photo">Photo</option>
+</select>
+
+
+      <!-- FILTERS -->
+      <select id="filterSelect">
+        <option value="none">Normal</option>
+        <option value="grayscale(100%)">Noir</option>
+        <option value="sepia(100%)">Sepia</option>
+        <option value="contrast(120%) saturate(130%)">Clarendon</option>
+        <option value="brightness(110%) saturate(150%)">Juno</option>
+        <option value="sepia(30%) saturate(140%) brightness(105%)">Lark</option>
+        <option value="contrast(140%) brightness(90%)">Lo-Fi</option>
+        <option value="brightness(120%) contrast(110%) saturate(120%)">Valencia</option>
+        <option value="hue-rotate(180deg) saturate(130%)">Cool</option>
+        <option value="hue-rotate(330deg) saturate(120%)">Warm</option>
+        <option value="blur(1px) brightness(110%)">Soft Glow</option>
+        <option value="grayscale(100%) contrast(150%)">Noir+</option>
+        <option value="sepia(60%) contrast(120%)">Vintage</option>
+      </select>
+
+      <!-- LAYOUT -->
+      <select id="layoutSelect">
+        <option value="strip">Classic Strip</option>
+        <option value="grid">Grid</option>
+        <option value="single">Single Photo</option>
+      </select>
+
+    </div>
+  </div>
+
+  <!-- HIDDEN CANVAS -->
+  <canvas id="canvas" style="display:none;"></canvas>
+
+  <!-- PREVIEW TITLE -->
+  <h3 id="stripTitle" style="display:none;">Preview</h3>
+  <hr id="stripLine" style="display:none;">
+  <!-- PHOTO STRIP PREVIEW -->
+  <img id="stripPreview" style="display:none; max-width:100%;">
+
+  <!-- POST CONTROLS -->
+  <div id="postControls" class="strip-controls" style="display:none;">
+    <button onclick="resetBooth()">Wanna Retake!</button>
+    <a id="downloadStrip" download="photo-strip.png">
+      <button>Download</button>
+    </a>
+  </div>
+
+</div>
+
+<!-- FLASH EFFECT -->
+<div id="flash"></div>
+
+<!-- SCRIPT -->
+<script src="script.js"></script>
+
+</body>
+</html>
